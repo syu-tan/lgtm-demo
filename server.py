@@ -49,8 +49,9 @@ def lgtm() -> Any:
 
     global FILE_COUNT
     msg = request.form.get('msg')
+    color = request.form.get('color')
     filebuf = request.files.get("lgtm")
-    print(filebuf.mimetype)
+    
     if filebuf is None:
         return "ファイルがないよ", 400
     elif not filebuf.mimetype in XLSX_MIMETYPE:
@@ -71,7 +72,7 @@ def lgtm() -> Any:
             mgs = "lgtm"
 
         # 画像処理
-        save_with_message(path_tmp, msg)
+        save_with_message(path_tmp, msg, color)
         os.remove(path_tmp)
 
         return send_file(OUTPUT_NAME, attachment_filename=f"{msg}.png", as_attachment=True, mimetype=XLSX_MIMETYPE[1]), 200
