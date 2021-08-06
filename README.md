@@ -25,6 +25,9 @@
 # 結果
 ![誰?](data/sample.png "サンプル")
 
+### 感謝
+[こちら](https://github.com/rhoboro/lgtm)参考にさせていただきました。ありがとうございます
+
 
 
 
