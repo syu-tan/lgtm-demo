@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <title>LGTM！</title>
+</head>
+
+<body>
+    <h2>いつでもLGTM</h2>
+
+    <form action="{{ _url }}/lgtm" method="post" enctype="multipart/form-data">
+        <input type="file" name="lgtm"/>
+        <input type="text" name="msg" value="lgtm" />
+        <button>送信</button>
+    </form>
+
+    <br />
+
+    <h3>動作試験</h3>
+    <form action="{{ _url }}/test" method="get">
+        <button>送信</button>
+    </form>
+
+    <script>
+    </script>
+</body>
+
+</html>

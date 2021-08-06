@@ -1,0 +1,12 @@
+# artifact
+output.png
+tmp/
+
+# logs
+**.log
+
+# cache
+**__cache__/
+
+# note
+release.sh
