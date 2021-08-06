@@ -18,7 +18,8 @@ OUTPUT_NAME = "output.png"
 OUTPUT_FORMAT = "PNG"
 
 
-def save_with_message(fp: str, message: str) -> None:
+
+def save_with_message(fp: str, message: str, color: str) -> None:
     """
     パスから画像を読み込んでメッセージを記載する
 
@@ -31,8 +32,17 @@ def save_with_message(fp: str, message: str) -> None:
     message: str
         記入したい文字列
     """
+
     image = Image.open(fp)
     draw = ImageDraw.Draw(image)
+
+    if color is None:
+        rgb = FONT_COLOR_WHITE
+    else:
+        hex2rgb = lambda hx: (int(hx[0:2],16),int(hx[2:4],16),int(hx[4:6],16))
+        rgb = hex2rgb(color.replace("#", "")) 
+
+
     # メッセージを描画できる領域のサイズ
     # タプルの要素ごとに計算する
     image_width, image_height = image.size
@@ -51,9 +61,9 @@ def save_with_message(fp: str, message: str) -> None:
         if w > 0 and h > 0:
             position = ((image_width - text_width) / 2, (image_height - text_height) / 2)
             # メッセージの描画
-            draw.text(position, message, fill=FONT_COLOR_WHITE, font=font)
+            draw.text(position, message, fill=rgb, font=font)
             break
-
+    
     # TODO: not over write
     image.save(OUTPUT_NAME, OUTPUT_FORMAT)
 
